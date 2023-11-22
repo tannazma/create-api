@@ -17,9 +17,32 @@ model User {
   age      Int
   Post     Post[]
 }
+
 model Post {
   id      Int    @id @default(autoincrement())
   message String
   poster  User   @relation(fields: [userId], references: [id])
   userId  Int
+}
+
+model Pet {
+  id           Int     @id @default(autoincrement())
+  name         String  @unique
+  kind         String
+  likesLasagna Boolean
+  owner        Owner   @relation(fields: [ownerId], references: [id])
+  ownerId      Int
+  foods        Food[]
+}
+
+model Food {
+  id   Int    @id @default(autoincrement())
+  name String
+  pets Pet[]
+}
+
+model Owner {
+  id   Int    @id @default(autoincrement())
+  name String
+  Pet  Pet[]
 }
