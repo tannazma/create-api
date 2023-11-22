@@ -89,3 +89,18 @@ app.patch("/users/:id", async (req, res) => {
     res.status(500).send({ message: "Something went wrong" });
   }
 });
+
+app.delete("/users/:id", async (req, res) => {
+    const userId = Number(req.params.id);
+    try {
+      await prisma.user.delete({
+        where: {
+          id: userId,
+        },
+      });
+      res.status(200).send({ message: "User Deleted!" });
+    } catch (error) {
+      // If we get an error, send back HTTP 500 (Server Error)
+      res.status(500).send({ message: "Something went wrong!" });
+    }
+  });
