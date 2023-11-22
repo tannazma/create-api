@@ -68,3 +68,24 @@ app.post("/users", async (req, res) => {
       .send({ message: '"username", "password" and "age" are required.' });
   }
 });
+
+app.patch("/users/:id", async (req, res) => {
+  const userId = Number(req.params.id);
+  const requestBody = req.body;
+
+  if (isNaN(userId)) {
+    res.status(400).send({ message: "User id should be a number" });
+    return;
+  }
+  try {
+    await prisma.user.update({
+      where: {
+        id: userId,
+      },
+      data: requestBody,
+    });
+    res.status(201).send({ message: "User updated!" });
+  } catch(error) {
+    res.status(500).send({ message: "Something went wrong" });
+  }
+});
