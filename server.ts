@@ -21,6 +21,7 @@ app.get("/users", async (req, res) => {
 // an endpoint to return the user with an id equal to the :id in the route
 app.get("/users/:id", async (req, res) => {
   //   const idFromParams = req.params.id;
+  //   const idAsNumber = parseInt(req.params.id);
   const idAsNumber = Number(req.params.id);
   if (isNaN(idAsNumber)) {
     res.status(400).send({ message: "id should be a number" });
