@@ -45,14 +45,26 @@ app.listen(port, () => {
 });
 
 app.post("/users", async (req, res) => {
-  const requesBody = req.body;
-  console.log(requesBody);
-  try {
-    await prisma.user.create({
-      data: requesBody,
-    });
-    res.status(201).send({ message: "User created!" });
-  } catch (error) {
-    res.status(500).send({ message: "Something went wrong!" });
+  const requestBody = req.body;
+  if (
+    "age" in requestBody &&
+    "username" in requestBody &&
+    "password" in requestBody
+  ) {
+    console.log(requestBody);
+    try {
+      await prisma.user.create({
+        data: requestBody,
+      });
+      res.status(201).send({ message: "User created!" });
+    } catch (error) {
+      // If we get an error, send back HTTP 500 (Server Error)
+      res.status(500).send({ message: "Something went wrong!" });
+    }
+  } else {
+    // If we are missing fields, send back a HTTP 400
+    res
+      .status(400)
+      .send({ message: '"username", "password" and "age" are required.' });
   }
 });
