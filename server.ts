@@ -41,3 +41,9 @@ app.get("/users/:id", async (req, res) => {
 app.listen(port, () => {
   console.log(`⚡ Server listening on port: ${port}`);
 });
+
+app.post("/users", (req, res) => {
+  const requesBody = req.body;
+  console.log(requesBody);
+  res.send({ message: "Reacieved the body!" });
+});
