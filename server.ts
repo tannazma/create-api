@@ -1,10 +1,12 @@
 import express from "express";
 import user from "./prisma/data/user.json";
 import { PrismaClient } from "@prisma/client";
+import { json } from "express";
 
 const prisma = new PrismaClient();
 
 const app = express();
+app.use(json());
 const port = 3001;
 
 app.get("/users", async (req, res) => {
@@ -42,8 +44,15 @@ app.listen(port, () => {
   console.log(`⚡ Server listening on port: ${port}`);
 });
 
-app.post("/users", (req, res) => {
+app.post("/users", async (req, res) => {
   const requesBody = req.body;
   console.log(requesBody);
-  res.send({ message: "Reacieved the body!" });
+  try {
+    await prisma.user.create({
+      data: requesBody,
+    });
+    res.status(201).send({ message: "User created!" });
+  } catch (error) {
+    res.status(500).send({ message: "Something went wrong!" });
+  }
 });
