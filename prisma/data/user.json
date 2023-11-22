@@ -1,0 +1,62 @@
+[
+    {
+      "id": 1,
+      "username": "justinbieber",
+      "password": "belieber1",
+      "age": 27
+    },
+    {
+      "id": 2,
+      "username": "arianagrande",
+      "password": "thankunext",
+      "age": 28
+    },
+    {
+      "id": 3,
+      "username": "beyonce",
+      "password": "queenbey",
+      "age": 39
+    },
+    {
+      "id": 4,
+      "username": "taylorswift",
+      "password": "lover13",
+      "age": 31
+    },
+    {
+      "id": 5,
+      "username": "rihanna",
+      "password": "umbrella",
+      "age": 33
+    },
+    {
+      "id": 6,
+      "username": "katyperry",
+      "password": "firework",
+      "age": 37
+    },
+    {
+      "id": 7,
+      "username": "brunomars",
+      "password": "24kmagic",
+      "age": 36
+    },
+    {
+      "id": 8,
+      "username": "ladygaga",
+      "password": "pokerface",
+      "age": 35
+    },
+    {
+      "id": 9,
+      "username": "edsheeran",
+      "password": "thinkingoutloud",
+      "age": 30
+    },
+    {
+      "id": 10,
+      "username": "shawnmendes",
+      "password": "inmyblood",
+      "age": 23
+    }
+  ]
