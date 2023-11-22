@@ -7,9 +7,8 @@ const prisma = new PrismaClient();
 const app = express();
 const port = 3001;
 
-app.get("/", async (req, res) => {
+app.get("/users", async (req, res) => {
   const allUsers = await prisma.user.findMany();
-
   res.send(allUsers);
 });
 
