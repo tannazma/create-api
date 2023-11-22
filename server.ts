@@ -8,7 +8,13 @@ const app = express();
 const port = 3001;
 
 app.get("/users", async (req, res) => {
-  const allUsers = await prisma.user.findMany();
+  const allUsers = await prisma.user.findMany({
+    select: {
+      id: true,
+      username: true,
+      age: true,
+    },
+  });
   res.send(allUsers);
 });
 
